@@ -1,6 +1,6 @@
 { config
 , ... }: {
-  config.xdg.dataFile.wallpapers.source = ../wallpapers;
+  config.xdg.dataFile.backgrounds.source = ../wallpapers;
 
   config.dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -46,15 +46,15 @@
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///${config.xdg.dataHome}/wallpapers/ctp-glitch-portrait.png";
-      picture-uri-dark = "file:///${config.xdg.dataHome}/wallpapers/ctp-glitch-portrait.png";
+      picture-uri = "file:///${config.xdg.dataHome}/backgrounds/ctp-glitch-portrait.png";
+      picture-uri-dark = "file:///${config.xdg.dataHome}/backgrounds/ctp-glitch-portrait.png";
       primary-color = "#212123";
       secondary-color = "#212123";
     };
     "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       picture-options = "zoom";
-      picture-uri = "file:///${config.xdg.dataHome}/wallpapers/ctp-glitch-portrait.png";
+      picture-uri = "file:///${config.xdg.dataHome}/backgrounds/ctp-glitch-portrait.png";
       primary-color = "#212123";
       secondary-color = "212123";
     };
