@@ -5,7 +5,6 @@
       DOOMDIR = "${config.xdg.configHome}/doom";
       DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
       DOOMPROFILELOADFILE = "${config.xdg.configHome}/doom-local/profiles.el";
-      EMACS = "${pkgs.emacs}/bin/emacs";
     };
   };
 
@@ -15,8 +14,8 @@
       onChange = "${pkgs.writeShellScript "doom-change" ''
           export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
           export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
-          export EMACS="${pkgs.emacs}/bin/emacs"
           export PATH="${lib.makeBinPath [ pkgs.git ]}:$PATH"
+          export EMACS="${toString config.home.path}/bin/emacs"
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
@@ -24,16 +23,20 @@
           fi
       ''}";
     };
+    #"doom/themes/catppuccin-theme.el" = {
+    #  source = config.lib.file.mkOutOfStoreSymlink "~/source/ctp-emacs/catppuccin-theme.el";
+    #};
     "emacs" = {
       source = pkgs.fetchgit {
         url = "https://github.com/doomemacs/doomemacs";
-        hash = "sha256-C+mQGq/HBDgRkqdwYE/LB3wQd3oIbTQfzldtuhmKVeU=";
+        rev = "e96624926d724aff98e862221422cd7124a99c19";
+        sha256 = "sha256-C+mQGq/HBDgRkqdwYE/LB3wQd3oIbTQfzldtuhmKVeU=";
       };
       onChange = "${pkgs.writeShellScript "doom-change" ''
           export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
           export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
-          export EMACS="${pkgs.emacs}/bin/emacs"
           export PATH="${lib.makeBinPath [ pkgs.git ]}:$PATH"
+          export EMACS="${toString config.home.path}/bin/emacs"
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
