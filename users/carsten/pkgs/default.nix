@@ -4,7 +4,9 @@
   programs.bash.enable = true;
 
   home.packages = with pkgs; [
-    (pkgs.callPackage ./emacs.nix { })
+    ((emacsPackagesFor emacs).emacsWithPackages (epkgs: [
+      epkgs.vterm
+    ]))
     catppuccin-gtk
     bat
     (discord.override { withOpenASAR = true; })
