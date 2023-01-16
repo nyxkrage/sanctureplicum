@@ -4,9 +4,21 @@
   programs.bash.enable = true;
 
   home.packages = with pkgs; [
-    ((emacsPackagesFor emacs).emacsWithPackages (epkgs: [
-      epkgs.vterm
-    ]))
+    (let wrapped = pkgs.writeShellScriptBin "emacs" ''
+        export DOOMDIR=$HOME/.config/doom
+        export DOOMLOCALDIR=$HOME/.config/doom-local
+        export EMACS=${pkgs.emacs}/bin/emacs
+        exec "${pkgs.emacs}/bin/emacs" $@
+      '';
+    in pkgs.symlinkJoin {
+      name = "emacs";
+      paths = [
+        wrapped
+        ((emacsPackagesFor emacs).emacsWithPackages (epkgs: [
+          epkgs.vterm
+        ]))
+      ];
+    })
     catppuccin-gtk
     bat
     (discord.override { withOpenASAR = true; })
