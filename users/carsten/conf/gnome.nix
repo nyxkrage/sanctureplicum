@@ -18,9 +18,15 @@
         "unite@hardpixel.eu"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
+
+      favorite-apps = [
+        "firefox.desktop"
+        "emacs.desktop"
+      ];
     };
     "org/gnome/shell/extensions/just-perfection" = {
       panel = false;
+      panel-in-overview = true;
     };
     "org/gnome/shell/extensions/unite" = {
       hide-window-titlebars = "always";
@@ -51,6 +57,9 @@
       picture-uri = "file:///${config.xdg.dataHome}/wallpapers/ctp-glitch-portrait.png";
       primary-color = "#212123";
       secondary-color = "212123";
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
     };
   };
 }
