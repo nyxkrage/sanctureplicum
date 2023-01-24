@@ -9,6 +9,7 @@
       epkgs.vterm
       epkgs.pdf-tools
       epkgs.auctex
+      (pkgs.callPackage ./spectre-el.nix {})
     ];
   };
 
@@ -28,7 +29,7 @@
     yq
 
     # Local
-    (callPackage ./libspectre.nix {})
+    #(callPackage ./libspectre.nix {})
 
     # Rust
     llvmPackages_latest.lld
