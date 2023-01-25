@@ -19,13 +19,10 @@
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
-            ${config.xdg.configHome}/emacs/bin/doom sync -u
+            ${config.xdg.configHome}/emacs/bin/doom sync -u -e
           fi
       ''}";
     };
-    #"doom/themes/catppuccin-theme.el" = {
-    #  source = config.lib.file.mkOutOfStoreSymlink "~/source/ctp-emacs/catppuccin-theme.el";
-    #};
     "emacs" = {
       source = pkgs.fetchgit {
         url = "https://github.com/doomemacs/doomemacs";
@@ -40,7 +37,7 @@
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
-            ${config.xdg.configHome}/emacs/bin/doom sync -u
+            ${config.xdg.configHome}/emacs/bin/doom sync -u -e
           fi
         ''}";
     };
