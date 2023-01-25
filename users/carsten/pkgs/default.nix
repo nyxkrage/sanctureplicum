@@ -12,12 +12,13 @@
     ];
   };
 
-
+  services.lorri.enable = true;
 
   home.packages = with pkgs; [
     catppuccin-gtk
     bat
     (discord.override { withOpenASAR = true; })
+    direnv
     dogdns
     duf
     exa

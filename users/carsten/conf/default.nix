@@ -1,9 +1,10 @@
 { ... }: {
   imports = [ 
-    ./gnome.nix
+    ./direnv.nix
     ./emacs.nix
-    ./ssh.nix
     ./git.nix
+    ./gnome.nix
+    ./ssh.nix
     ./xdg.nix
   ];
 }
