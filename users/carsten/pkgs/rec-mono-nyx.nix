@@ -3,7 +3,7 @@
 , stdenv
 , fetchgit
 , fetchurl
-, python310Packages
+, python39Packages
 }: stdenv.mkDerivation rec {
   pname = "rec-mono-nyx";
   version = "1.0.0";
@@ -23,17 +23,20 @@
     (let
       mach-nix = import (fetchgit {
         url = "https://github.com/DavHau/mach-nix";
-        rev = "68a85753555ed67ff53f0d0320e5ac3c725c7400";
-        sha256 = "sha256-YIcQtXNQSofFSRDO8Y/uCtXAMguc8HqpY83TstgkH+k=";
+        rev = "6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1";
+        sha256 = "sha256-BRz30Xg/g535oRJA3xEcXf0KM6GTJPugt2lgaom3D6g=";
       }) {
-        python = "python3";
+        inherit pkgs;
+        pypiDataRev = "e9571cac25d2f509e44fec9dc94a3703a40126ff";
+        python = "python39";
       };
     in
       mach-nix.mkPython {  # replace with mkPythonShell if shell is wanted
         requirements = builtins.readFile "${src}/requirements.txt";
+        _.pyyaml.doInstallCheck = false;
       })
-    python310Packages.pip
-    python310Packages.setuptools
+    python39Packages.pip
+    python39Packages.setuptools
   ];
 
   outputs = [ "out" ];
