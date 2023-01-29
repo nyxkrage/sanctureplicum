@@ -32,7 +32,7 @@
     yq
 
     # Local
-    #(callPackage ./libspectre.nix {})
+    (callPackage ./rec-mono-nyx.nix {})
 
     # Rust
     llvmPackages_latest.lld
