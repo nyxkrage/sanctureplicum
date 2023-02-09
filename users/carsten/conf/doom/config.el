@@ -32,6 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+(add-to-list 'custom-theme-load-path (concat (getenv "HOME") "/source/ctp-emacs"))
 (setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -73,3 +74,14 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(defun ctp/org-heading-colors ()
+  (face-remap-add-relative 'org-level-1 (list :foreground (catppuccin-get-color 'blue)))
+  (face-remap-add-relative 'org-level-2 (list :foreground (catppuccin-get-color 'red)))
+  (face-remap-add-relative 'org-level-3 (list :foreground (catppuccin-get-color 'green)))
+  (face-remap-add-relative 'org-level-4 (list :foreground (catppuccin-get-color 'lavender)))
+  (face-remap-add-relative 'org-level-5 (list :foreground (catppuccin-get-color 'yellow)))
+  (face-remap-add-relative 'org-level-6 (list :foreground (catppuccin-get-color 'maroon)))
+  (face-remap-add-relative 'org-level-7 (list :foreground (catppuccin-get-color 'teal)))
+  (face-remap-add-relative 'org-level-8 (list :foreground (catppuccin-get-color 'mauve))))
+(add-hook! 'org-mode-hook 'ctp/org-heading-colors)

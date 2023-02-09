@@ -4,7 +4,7 @@
   programs.bash.enable = true;
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs;
+    package = pkgs.emacsGit;
     extraPackages = epkgs: [
       epkgs.vterm
       epkgs.pdf-tools
@@ -43,5 +43,6 @@
 
     # language-servers
     rust-analyzer
+    nodePackages.javascript-typescript-langserver
   ];
 }

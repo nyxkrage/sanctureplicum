@@ -20,6 +20,7 @@
             ${config.xdg.configHome}/emacs/bin/doom install
           else
             ${config.xdg.configHome}/emacs/bin/doom sync -u -e
+            ${config.xdg.configHome}/emacs/bin/doom env -a SSH_AUTH_SOCK
           fi
       ''}";
     };
@@ -38,6 +39,7 @@
             ${config.xdg.configHome}/emacs/bin/doom install
           else
             ${config.xdg.configHome}/emacs/bin/doom sync -u -e
+            ${config.xdg.configHome}/emacs/bin/doom env -a SSH_AUTH_SOCK
           fi
         ''}";
     };
