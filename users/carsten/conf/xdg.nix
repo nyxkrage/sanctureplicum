@@ -10,14 +10,21 @@
       # Improve the XDG dir locations so they dont clutter up $HOME
       download    = "$HOME/downloads";
       desktop     = "$HOME/desktop";
-      documents   = "$HOME/documents";
+      documents   = "$HOME/desktop/documents";
 
-      publicShare = "$HOME/etc/public";
-      templates   = "$HOME/etc/templates";
+      publicShare = "$HOME/.local/share/public";
+      templates   = "$HOME/.local/share/templates";
 
       music       = "$HOME/media/music";
       pictures    = "$HOME/media/pictures";
       videos      = "$HOME/media/videos";
     };
+  };
+
+  home.sessionVariables = {
+    CARGO_HOME = builtins.trace "${config.xdg.dataHome}/cargo" "${config.xdg.dataHome}/cargo";
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    HISTFILE = "${config.xdg.dataHome}/bash/histfile";
+    WGETRC = "${config.xdg.dataHome}/wget/wgetrc";
   };
 }
