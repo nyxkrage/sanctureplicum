@@ -30,6 +30,8 @@
     pavucontrol
     (ripgrep.override { withPCRE2 = true; })
     yq
+    recursive
+    numberstation
 
     # Local
     (callPackage ./rec-mono-nyx.nix {})
