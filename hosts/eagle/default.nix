@@ -103,6 +103,7 @@
     networkmanager.enable = true;
     hostName = "eagle";
     nameservers = [ "192.168.1.1" "87.62.97.64" ];
+    firewall.allowedTCPPorts = [ 3389 ];
   };
 
   services.xserver = {
@@ -115,6 +116,7 @@
     desktopManager.gnome.enable = true;
   };
 
+  services.gnome.gnome-remote-desktop.enable = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
