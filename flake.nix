@@ -30,8 +30,8 @@
           ({ config, pkgs, ... }: {
             nixpkgs.overlays = [
               (import (builtins.fetchTarball {
-                url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-                sha256 = "05941qsk7138ylfpzqcqcgrpjw0jnyh2r1q6nhyh7n3d5q00hc8b";
+                url = https://github.com/nix-community/emacs-overlay/archive/0fe268a3b03ab9ef7a77363c64247030ee3902a7.tar.gz;
+                sha256 = "sha256:05cxwj5xnw9kci75pgzd3kff9k3548fsc0x8y0s08jzcidai139f";
               }))
             ];
           })
