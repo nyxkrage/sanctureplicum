@@ -16,6 +16,19 @@
   services.lorri.enable = true;
 
   home.packages = with pkgs; [
+    (let
+      boxedFirefox = writeShellScriptBin "firefox-devedition" ''
+    exec boxxy ${firefox-devedition-bin}/bin/firefox-devedition
+  '';
+    in
+      pkgs.symlinkJoin {
+        name = "firefox-devedition-bin";
+        paths = [
+          boxedFirefox
+          (firefox-devedition-bin.override { wmClass = "firefox-aurora"; })
+        ];
+      })
+
     catppuccin-gtk
     bat
     (discord.override { withOpenASAR = true; })
@@ -35,6 +48,7 @@
 
     # Local
     (callPackage ./rec-mono-nyx.nix {})
+    (callPackage ./boxxy.nix {})
 
     # Rust
     llvmPackages_latest.lld

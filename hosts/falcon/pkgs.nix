@@ -4,7 +4,7 @@
   imports = [ ];
 
   environment.systemPackages = with pkgs; [
-    (firefox-devedition-bin.override { wmClass = "firefox-aurora"; })
+    #(firefox-devedition-bin.override { wmClass = "firefox-aurora"; })
     dconf
     git
     git-lfs
