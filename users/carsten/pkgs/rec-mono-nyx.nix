@@ -28,6 +28,7 @@
       }) {
         inherit pkgs;
         pypiDataRev = "e9571cac25d2f509e44fec9dc94a3703a40126ff";
+        pypiDataSha256 = "sha256:1rbb0yx5kjn0j6lk0ml163227swji8abvq0krynqyi759ixirxd5";
         python = "python39";
       };
     in
