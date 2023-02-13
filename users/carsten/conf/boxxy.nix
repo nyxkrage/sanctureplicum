@@ -12,7 +12,7 @@
         {
           name = ".mozilla Directory";
           target = "~/.mozilla";
-          rewrite = "~/.local/share/mozilla";
+          rewrite = "~/.local/share/";
           mode = "directory";
         }
       ];

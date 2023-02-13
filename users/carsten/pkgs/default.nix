@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     (let
       boxedFirefox = writeShellScriptBin "firefox-devedition" ''
-    exec boxxy ${firefox-devedition-bin}/bin/firefox-devedition
+    exec boxxy ${firefox-devedition-bin}/bin/firefox-devedition $@
   '';
     in
       pkgs.symlinkJoin {
