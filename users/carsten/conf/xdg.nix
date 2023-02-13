@@ -22,7 +22,7 @@
   };
 
   home.sessionVariables = {
-    CARGO_HOME = builtins.trace "${config.xdg.dataHome}/cargo" "${config.xdg.dataHome}/cargo";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
     GNUPGHOME = "${config.xdg.dataHome}/gnupg";
     HISTFILE = "${config.xdg.dataHome}/bash/histfile";
     WGETRC = "${config.xdg.dataHome}/wget/wgetrc";
