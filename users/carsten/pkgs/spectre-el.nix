@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   pname = "spectre-emacs";
-  version = "0.1.0";
+  version = "0.3.0";
 
   src = fetchgit {
     url = "https://github.com/nyxkrage/spectre-emacs";
-    rev = "ceb5898f5f96c200a029349c83168132ac6e309f";
-    sha256 = "sha256-3JLoHUZ+5jBeGeOhkOmQ/GDMG4q266GX3LiB0GNgbiw=";
+    rev = "41a9258710ec21fcbb94c80f456da04c9760cf45";
+    sha256 = "sha256-zd2yR3y0GnCC0CGx8ij+Kag+8TRRxOqhUwQ2T5ncDEI=";
   };
 
   depsBuildBuild = [
