@@ -6,6 +6,6 @@
     ./gnome.nix
     ./ssh.nix
     ./xdg.nix
-    ./boxxy.nix
+    ./mpd.nix
   ];
 }

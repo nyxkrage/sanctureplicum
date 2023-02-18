@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  config.home = {
+  home = {
     sessionPath = [ "${config.xdg.configHome}/emacs/bin" ];
     sessionVariables = {
       DOOMDIR = "${config.xdg.configHome}/doom";
@@ -7,8 +7,9 @@
       DOOMPROFILELOADFILE = "${config.xdg.configHome}/doom-local/profiles.el";
     };
   };
+  systemd.user.sessionVariables = config.home.sessionVariables;
 
-  config.xdg.configFile = {
+  xdg.configFile = {
     "doom" = {
       source = ./doom;
       onChange = "${pkgs.writeShellScript "doom-change" ''
@@ -20,7 +21,6 @@
             ${config.xdg.configHome}/emacs/bin/doom install
           else
             ${config.xdg.configHome}/emacs/bin/doom sync -u -e
-            ${config.xdg.configHome}/emacs/bin/doom env -a SSH_AUTH_SOCK
           fi
       ''}";
     };
@@ -39,7 +39,6 @@
             ${config.xdg.configHome}/emacs/bin/doom install
           else
             ${config.xdg.configHome}/emacs/bin/doom sync -u -e
-            ${config.xdg.configHome}/emacs/bin/doom env -a SSH_AUTH_SOCK
           fi
         ''}";
     };

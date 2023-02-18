@@ -12,6 +12,7 @@
       "networkmanager" # Use networks
       "wheel" # Sudoer
     ];
+    shell = pkgs.zsh;
     packages = [ ];
   };
 

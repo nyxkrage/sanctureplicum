@@ -77,13 +77,6 @@
     pulse.enable = true;
   };
 
-  # Pinentry / GPG
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "gtk2";
-    enableSSHSupport = true;
-  };
-
   security.pam.loginLimits = [
     # Unlimited amount of processes for root
     {

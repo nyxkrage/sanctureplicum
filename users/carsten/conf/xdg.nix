@@ -3,28 +3,34 @@
 , pkgs
 , ... }: {
   xdg = {
+    enable = true;
+    cacheHome = "${config.home.homeDirectory}/.cache";
+    configHome = "${config.home.homeDirectory}/.config";
+    dataHome = "${config.home.homeDirectory}/.local/share";
+    stateHome = "${config.home.homeDirectory}/.local/state";
+
+
     userDirs = {
       enable = true;
       createDirectories = true;
 
       # Improve the XDG dir locations so they dont clutter up $HOME
-      download    = "$HOME/downloads";
-      desktop     = "$HOME/desktop";
-      documents   = "$HOME/desktop/documents";
+      download    = "${config.home.homeDirectory}/downloads";
+      desktop     = "${config.home.homeDirectory}/desktop";
+      documents   = "${config.home.homeDirectory}/desktop/documents";
 
-      publicShare = "$HOME/.local/share/public";
-      templates   = "$HOME/.local/share/templates";
+      publicShare = "${config.home.homeDirectory}/.local/share/public";
+      templates   = "${config.home.homeDirectory}/.local/share/templates";
 
-      music       = "$HOME/media/music";
-      pictures    = "$HOME/media/pictures";
-      videos      = "$HOME/media/videos";
+      music       = "${config.home.homeDirectory}/media/music";
+      pictures    = "${config.home.homeDirectory}/media/pictures";
+      videos      = "${config.home.homeDirectory}/media/videos";
     };
   };
 
   home.sessionVariables = {
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-    HISTFILE = "${config.xdg.dataHome}/bash/histfile";
     WGETRC = "${config.xdg.dataHome}/wget/wgetrc";
+    XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
   };
 }

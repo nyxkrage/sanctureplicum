@@ -77,13 +77,6 @@
     pulse.enable = true;
   };
 
-  # Pinentry / GPG
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "gtk2";
-    enableSSHSupport = true;
-  };
-
   security.pam.loginLimits = [
     # Unlimited amount of processes for root
     {
@@ -103,6 +96,9 @@
     networkmanager.enable = true;
     hostName = "falcon";
     nameservers = [ "192.168.1.1" "87.62.97.64" ];
+    extraHosts = ''
+      127.0.0.3 local.pid1.sh
+    '';
   };
 
   services.xserver = {
