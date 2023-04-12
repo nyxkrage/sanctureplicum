@@ -11,6 +11,8 @@
     extraGroups = [
       "networkmanager" # Use networks
       "wheel" # Sudoer
+      "vboxusers" # VirtualBox
+      "docker" # Containers
     ];
     shell = pkgs.zsh;
     packages = [ ];

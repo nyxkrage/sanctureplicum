@@ -3,8 +3,8 @@
 , stdenv
 , fetchgit
 , fetchurl
-, python39Packages
-}: stdenv.mkDerivation rec {
+}: stdenv.mkDerivation rec
+{
   pname = "rec-mono-nyx";
   version = "1.0.0";
 
@@ -19,23 +19,13 @@
     sha256 = "sha256-AuV49/Zik9O5KpzILk6hcmjCuff1bbogjrbz8qCydyE=";
   };
 
-  nativeBuildInputs = [
-    (let
-      mach-nix = import (fetchgit {
-        url = "https://github.com/DavHau/mach-nix";
-        rev = "6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1";
-        sha256 = "sha256-BRz30Xg/g535oRJA3xEcXf0KM6GTJPugt2lgaom3D6g=";
-      }) {
-        inherit pkgs;
-        pypiDataRev = "e9571cac25d2f509e44fec9dc94a3703a40126ff";
-        pypiDataSha256 = "sha256:1rbb0yx5kjn0j6lk0ml163227swji8abvq0krynqyi759ixirxd5";
-        python = "python39";
-      };
-    in
-      mach-nix.mkPython {  # replace with mkPythonShell if shell is wanted
-        requirements = builtins.readFile "${src}/requirements.txt";
-        _.pyyaml.doInstallCheck = false;
-      })
+  nativeBuildInputs = with pkgs.mach-nix.pkgs; [
+    (pkgs.mach-nix.mach-nix.lib."${pkgs.system}".mkPython {
+      requirements = builtins.readFile "${src}/requirements.txt";
+      _.pyyaml.doInstallCheck = false;
+      ignoreDataOutdated = true;
+      python = "python39";
+    })
     python39Packages.pip
     python39Packages.setuptools
   ];

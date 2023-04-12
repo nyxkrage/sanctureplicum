@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+;; asdfsync' after modifying this file!
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -76,8 +76,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-(add-to-list 'load-path "~/source/org-mode")
 
 (defun ctp/org-heading-colors ()
   (face-remap-add-relative 'org-level-1 (list :foreground (catppuccin-get-color 'blue)))
