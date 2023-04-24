@@ -1,6 +1,4 @@
-{ pkgs, config, ... }: {
-  imports = [ ];
-
+{ pkgs, config, osConfig, lib, ... }: {
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -15,7 +13,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGit;
+    package = if osConfig.graphical then pkgs.emacsGit else pkgs.emacsGit-nox;
     extraPackages = epkgs: [
       epkgs.vterm
       epkgs.pdf-tools
@@ -31,24 +29,27 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = if osConfig.graphical then "gtk2" else "curses";
     enableSshSupport = true;
     sshKeys = [ "64AB8617FA4EC63E93A4E1A94AE9B14AF64A86C6" "C54678A60A531F2144EC2391CF888696261ED167" ];
   };
 
   programs.firefox = {
-    enable = true;
+    enable = osConfig.graphical;
     package = (pkgs.firefox-devedition-bin.override { wmClass = "firefox-aurora"; });
     profiles.default = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; with pkgs.nur.repos.sanctureplicum.firefox-addons; [
         add-custom-search-engine
+        amp2html
         clearurls
         decentraleyes
-        multi-account-containers
+        duplicate-tab-shortcut
         header-editor
+        istilldontcareaboutcookies
+        masterpassword-firefox
+        multi-account-containers
         privacy-badger
         privacy-redirect
-        amp2html
         tab-stash
         ublock-origin
         vimium
@@ -173,35 +174,20 @@
   services.lorri.enable = true;
 
   home.packages = with pkgs; [
-    (discord.override { withOpenASAR = true; })
-
     (ripgrep.override { withPCRE2 = true; })
-    catppuccin-gtk
-    dconf
     direnv
     dogdns
     duf
     exa
     fd
     git-lfs
-    gnomeExtensions.color-picker
-    gnomeExtensions.just-perfection
-    gnomeExtensions.unite
     gnupg
-    gparted
     jq
     mcfly
-    numberstation
-    pavucontrol
-    pinentry-gtk2
-    recursive
+    pinentry-curses
     unzip
-    wireplumber
     yq
 
-    # Local
-    (callPackage ./areon-pro {})
-    (callPackage ./rec-mono-nyx.nix {})
 
     # Rust
     cargo
@@ -219,5 +205,22 @@
 
     # language-servers
     rust-analyzer
+  ] ++ lib.lists.optionals osConfig.graphical [
+    (discord.override { withOpenASAR = true; })
+    catppuccin-gtk
+    dconf
+    gparted
+    numberstation
+    pavucontrol
+    pinentry-gtk2
+    recursive
+    wireplumber
+    # Local
+    (callPackage ./areon-pro {})
+    (callPackage ./rec-mono-nyx.nix {})
+
+    gnomeExtensions.color-picker
+    gnomeExtensions.just-perfection
+    gnomeExtensions.unite
   ];
 }

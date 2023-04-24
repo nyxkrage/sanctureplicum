@@ -2,10 +2,12 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/nur";
-    #nyxkrage-nur.url = "github:nyxkrage/nur";
+    sanctureplicum-nur.url = "github:nyxkrage/sanctureplicum-nur";
     nekowinston-nur.url = "github:nekowinston/nur";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,11 +23,12 @@
     , nixpkgs
     , nixpkgs-unstable
     , nur
-    #, nyxkrage-nur
+    , sanctureplicum-nur
     , nekowinston-nur
     , emacs-overlay
     , mach-nix
     , mach-nixpkgs
+    , nixos-wsl
     , home-manager
     , ...
     } @inputs:
@@ -38,7 +41,7 @@
             pkgs = prev;
             repoOverrides = {
               nekowinston = import nekowinston-nur { pkgs = prev; };
-      #        nyxkrage = import nyxkrage-nur { pkgs = prev; };
+              sanctureplicum = import sanctureplicum-nur { pkgs = prev; };
             };
           };
           unstable = import nixpkgs-unstable {
@@ -61,7 +64,6 @@
           ({ config, pkgs, ... }: {
             nixpkgs.overlays = overlays;
           })
-          ./hosts/falcon
 
           home-manager.nixosModules.home-manager
           {
@@ -69,6 +71,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak";
           }
+          ./hosts/falcon
         ];
       };
       nixosConfigurations.eagle = nixpkgs.lib.nixosSystem {
@@ -77,7 +80,6 @@
           ({ config, pkgs, ... }: {
             nixpkgs.overlays = overlays;
           })
-          ./hosts/eagle
 
           home-manager.nixosModules.home-manager
           {
@@ -85,6 +87,32 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak";
           }
+          ./hosts/eagle
+        ];
+      };
+      nixosConfigurations.buzzard = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ({ config, pkgs, ... }: {
+            nixpkgs.overlays = overlays;
+          })
+          
+          nixos-wsl.nixosModules.wsl
+          {
+            wsl = {
+              enable = true;
+              wslConf.automount.root = "/mnt";
+              defaultUser = "carsten";
+              startMenuLaunchers = true;
+            };
+          }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak";
+          }
+          ./hosts/buzzard
         ];
       };
     };
