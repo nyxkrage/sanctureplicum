@@ -21,6 +21,11 @@
       pulse.enable = true;
     };
 
+    environment.systemPackages = with pkgs; [
+      pipewire
+      pulseaudio
+    ];
+
     services.xserver = {
       enable = true;
 

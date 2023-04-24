@@ -180,8 +180,6 @@
     duf
     exa
     fd
-    git-lfs
-    gnupg
     jq
     mcfly
     pinentry-curses

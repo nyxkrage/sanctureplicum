@@ -7,9 +7,7 @@
     ./hardware.nix
 
     ../../users/carsten
-    ../common.nix
-
-    ./pkgs.nix
+    ../common
   ];
 
   graphical = false;

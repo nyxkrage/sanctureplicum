@@ -6,11 +6,22 @@
   imports = [
     ./hardware.nix
 
-    ../../users/carsten
     ../common
+    
+    ./services
   ];
 
-  networking.hostName = "eagle";
+  users.users.admin = {
+    isNormalUser = true;
+    description = "Gitea Administrator";
+    hashedPassword = "$y$j9T$oL/jNqI1yz65OuUnJvpCn1$MC7.xSyvprru7QmqQVsGyBKZf2b4w7R7U.TmfzSBY39";
+    extraGroups = [
+      "wheel" # Sudoer
+    ];
+    shell = pkgs.bash;
+  };
+
+  networking.hostName = "gitea";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
