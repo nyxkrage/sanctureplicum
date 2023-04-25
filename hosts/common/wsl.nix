@@ -3,7 +3,7 @@
 , pkgs
 , ...
 }: {
-  config = lib.mkIf (!config.wsl.enable) {
+  config = lib.mkIf (!config.wsl.enable or false) {
     boot.loader = {
       systemd-boot = {
         enable = true;

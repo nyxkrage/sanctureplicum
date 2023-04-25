@@ -188,7 +188,10 @@
     fd
     jq
     mcfly
-    pinentry-curses
+    (if osConfig.graphical then
+        pinentry-gtk2
+    else
+        pinentry-curses)
     unzip
     yq
     wezterm
@@ -217,7 +220,6 @@
     gparted
     numberstation
     pavucontrol
-    pinentry-gtk2
     recursive
     wireplumber
     # Local
