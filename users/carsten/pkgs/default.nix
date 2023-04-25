@@ -37,22 +37,28 @@
   programs.firefox = {
     enable = osConfig.graphical;
     package = (pkgs.firefox-devedition-bin.override { wmClass = "firefox-aurora"; });
-    profiles.default = {
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; with pkgs.nur.repos.sanctureplicum.firefox-addons; [
-        add-custom-search-engine
-        amp2html
-        clearurls
-        decentraleyes
-        duplicate-tab-shortcut
-        header-editor
-        istilldontcareaboutcookies
-        masterpassword-firefox
-        multi-account-containers
-        privacy-badger
-        privacy-redirect
-        tab-stash
-        ublock-origin
-        vimium
+    profiles.default = {};
+    profiles.dev-edition-default = {
+      name = "dev-edition-default";
+      id = 1;
+      extensions =
+          with pkgs.nur.repos.rycee.firefox-addons;
+          with pkgs.nur.repos.sanctureplicum.firefox-addons;
+        [
+            add-custom-search-engine
+            clearurls
+            decentraleyes
+            duplicate-tab-shortcut
+            multi-account-containers
+            istilldontcareaboutcookies
+            masterpassword-firefox
+            header-editor
+            privacy-badger
+            privacy-redirect
+            amp2html
+            tab-stash
+            ublock-origin
+            vimium
       ];
       settings = {
         "app.normandy.api_url" = "";
@@ -185,6 +191,7 @@
     pinentry-curses
     unzip
     yq
+    wezterm
 
 
     # Rust
