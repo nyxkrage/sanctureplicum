@@ -10,6 +10,7 @@ with pkgs;
   imports = [
     ./graphical.nix
     ./wsl.nix
+    ./pkgs.nix
   ];
 
   users = {
