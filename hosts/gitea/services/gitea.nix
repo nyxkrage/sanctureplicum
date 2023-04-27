@@ -17,7 +17,10 @@
         COOKIE_SECURE = true;
         PROVIDER = "db";
       };
-      service.REGISTER_EMAIL_CONFIRM = true;
+      service = {
+        REGISTER_EMAIL_CONFIRM = true;
+        ENABLE_CAPTCHA = true;
+      };
       mailer = {
         ENABLED = true;
         SMTP_ADDR = "mail.pid1.sh";
