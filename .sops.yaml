@@ -1,0 +1,10 @@
+keys:
+  - &carsten BD9A82C3AC8185DAD4CFDA47A34D551C8CCA7DCD
+  - &gitea age1r2xcvgph5egus0xmyypplpya5wlz5a5kxwydjakvx94eqpgyhgdqqnzd3j
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - pgp:
+      - *carsten
+      age:
+      - *gitea

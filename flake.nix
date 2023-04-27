@@ -11,6 +11,8 @@
     nekowinston-nur.url = "github:nekowinston/nur";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     mach-nixpkgs.url = "github:nixos/nixpkgs/9fd0585f7dc9b85eb5d426396004cc649261e60d";
     mach-nix.url = "github:davhau/mach-nix/6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1";
     mach-nix.inputs.nixpkgs.follows = "mach-nixpkgs";
@@ -29,6 +31,7 @@
     , mach-nix
     , mach-nixpkgs
     , nixos-wsl
+    , sops-nix
     , home-manager
     , ...
     } @inputs:
@@ -86,6 +89,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "bak";
+            home-manager.sharedModules = [
+              sops-nix.homeManagerModule
+            ];
           }
           ./hosts/eagle
         ];
@@ -121,7 +127,8 @@
           ({ config, pkgs, ... }: {
             nixpkgs.overlays = overlays;
           })
-          
+
+          sops-nix.nixosModules.sops
           ./hosts/gitea
         ];
       };

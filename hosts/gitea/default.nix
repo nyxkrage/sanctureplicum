@@ -21,7 +21,15 @@
     shell = pkgs.bash;
   };
 
+  graphical = false;
+  vm-guest = true;
+
   networking.hostName = "gitea";
+  networking.firewall.allowedTCPPorts = [ 22 3000 ];
+
+  sops = {
+    defaultSopsFile = ../../secrets/gitea.yaml;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

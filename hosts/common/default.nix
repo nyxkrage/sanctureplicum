@@ -9,6 +9,7 @@ with pkgs;
 {
   imports = [
     ./graphical.nix
+    ./vm-guest.nix
     ./wsl.nix
     ./pkgs.nix
   ];
