@@ -12,7 +12,7 @@
 
   installPhase = ''
     mkdir -p $out/share/fonts/truetype/
-    cp ${src}/* $out/share/fonts/truetype/
+    find ${src} -not -path '*/.*' -type f -exec sh -c 'cp {} $out/share/fonts/truetype/$(echo {} | sed "s/\.enc$//")' \;
   '';
 
   meta = with lib; {
