@@ -104,14 +104,6 @@
           })
           
           nixos-wsl.nixosModules.wsl
-          {
-            wsl = {
-              enable = true;
-              wslConf.automount.root = "/mnt";
-              defaultUser = "carsten";
-              startMenuLaunchers = true;
-            };
-          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

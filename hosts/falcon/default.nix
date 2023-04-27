@@ -10,6 +10,7 @@
     ../common
   ];
 
+  nix.settings.build-cores = 12;
   networking.hostName = "falcon";
 
   # This value determines the NixOS release from which the default

@@ -10,8 +10,14 @@
     ../common
   ];
 
+  wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    defaultUser = config.users.users.carsten.name;
+    startMenuLaunchers = true;
+  };
   graphical = false;
-
+  nix.settings.build-cores = 12;
   networking.hostName = "buzzard";
 
   # This value determines the NixOS release from which the default

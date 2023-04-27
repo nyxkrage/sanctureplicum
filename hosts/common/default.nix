@@ -36,10 +36,6 @@ with pkgs;
     package = pkgs.nixFlakes;
 
     settings = {
-      # Maximum number of concurrent tasks during one build
-      # TODO: Dont put in common
-      build-cores = 12;
-
       # Maximum number of jobs that Nix will try to build in parallel
       max-jobs = "auto";
 
@@ -48,6 +44,8 @@ with pkgs;
 
       # Enable flakes
       experimental-features = [ "nix-command" "flakes" ];
+
+      trusted-users = [ config.users.users.carsten.name or "" ];
     };
   };
 

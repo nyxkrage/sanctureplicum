@@ -1,6 +1,7 @@
 { pkgs, config, ... }: {
   services.gitea = rec {
     enable = true;
+    appName = "Init System: Gitea";
     package = pkgs.unstable.gitea;
     database = {
       type = "postgres";
@@ -12,7 +13,11 @@
     mailerPasswordFile = config.sops.secrets.gitea_mailer_passwd.path;
     settings = {
       server.SSH_PORT = 22007;
-      session.COOKIE_SECURE = true;
+      session = {
+        COOKIE_SECURE = true;
+        PROVIDER = "db";
+      };
+      service.REGISTER_EMAIL_CONFIRM = true;
       mailer = {
         ENABLED = true;
         SMTP_ADDR = "mail.pid1.sh";

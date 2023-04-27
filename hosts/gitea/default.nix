@@ -20,6 +20,7 @@
     ];
     shell = pkgs.bash;
   };
+  nix.settings.build-cores = 4;
 
   graphical = false;
   vm-guest = true;

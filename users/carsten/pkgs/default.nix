@@ -7,7 +7,19 @@
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
     initExtra = ''
-      PROMPT='%n@%m %~ %# '
+      PROMPT='%2~ %# '
+      ### ctrl+arrows
+      bindkey "\e[1;5C" forward-word
+      bindkey "\e[1;5D" backward-word
+
+      ### ctrl+delete
+      bindkey "\e[3;5~" kill-word
+
+      ### ctrl+backspace
+      bindkey '^H' backward-kill-word
+
+      ### ctrl+shift+delete
+      bindkey "\e[3;6~" kill-line
     '';
   };
 
