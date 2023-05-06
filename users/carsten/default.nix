@@ -14,7 +14,7 @@
       "vboxusers" # VirtualBox
       "docker" # Containers
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     packages = [ ];
   };
 

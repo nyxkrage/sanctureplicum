@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  config.programs.zsh.initExtra = ''
-    eval "$(direnv hook zsh)"
+  config.programs.bash.initExtra = ''
+    eval "$(direnv hook bash)"
   '';
 }

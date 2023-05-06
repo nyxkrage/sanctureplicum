@@ -85,6 +85,4 @@ with pkgs;
   networking = {
     networkmanager.enable = true;
   };
-
-  programs.zsh.enable = true;
 }

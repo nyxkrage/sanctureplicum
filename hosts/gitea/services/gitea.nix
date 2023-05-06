@@ -2,7 +2,7 @@
   services.gitea = rec {
     enable = true;
     appName = "Init System: Gitea";
-    package = pkgs.unstable.gitea;
+    package = import ../pkgs/gitea { inherit pkgs; };
     database = {
       type = "postgres";
       host = "unix:///var/run/postgresql/";
@@ -20,6 +20,9 @@
       service = {
         REGISTER_EMAIL_CONFIRM = true;
         ENABLE_CAPTCHA = true;
+      };
+      ui = {
+        THEMES = "gitea,arc-green,catppuccin-latte-sky";
       };
       mailer = {
         ENABLED = true;

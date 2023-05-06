@@ -1,27 +1,5 @@
 { pkgs, config, osConfig, lib, ... }: {
-  programs.zsh = {
-    enable = true;
-    dotDir = ".config/zsh";
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/zsh_history";
-    };
-    initExtra = ''
-      PROMPT='%2~ %# '
-      ### ctrl+arrows
-      bindkey "\e[1;5C" forward-word
-      bindkey "\e[1;5D" backward-word
-
-      ### ctrl+delete
-      bindkey "\e[3;5~" kill-word
-
-      ### ctrl+backspace
-      bindkey '^H' backward-kill-word
-
-      ### ctrl+shift+delete
-      bindkey "\e[3;6~" kill-line
-    '';
-  };
+  programs.bash.enable = true;
 
   programs.emacs = {
     enable = true;
@@ -32,6 +10,17 @@
       epkgs.auctex
       (pkgs.callPackage ./spectre-el.nix {})
     ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      catppuccin-nvim
+    ];
+    extraConfig = ''
+      set number relativenumber
+      colorscheme catppuccin-latte
+    '';
   };
 
   programs.gpg = {

@@ -13,8 +13,12 @@
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
-    defaultUser = config.users.users.carsten.name;
+    defaultUser = "carsten"; 
     startMenuLaunchers = true;
+  };
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
   };
   graphical = false;
   nix.settings.build-cores = 12;
