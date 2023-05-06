@@ -1,18 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, giteaVersion, ... }:
 let
-  nodeNix = (import ./node.nix { inherit pkgs; });
+  giteaVersion = "1.19.3";
+  src = pkgs.fetchgit  { url = "https://github.com/nyxkrage/gitea"; rev = giteaVersion; hash = "sha256-KQEBq1BFQRLJW9fJq4W1sOsAqOCfNHKY/+cT8rkXxv4="; };
+  nodeNix = (import ./node.nix { inherit pkgs giteaVersion src; });
   nodeEnv = (pkgs.callPackage (nodeNix + "/default.nix") { });
 in
 pkgs.buildGoModule  rec {
   pname = "gitea-build";
-  version = "1.19.3-nyx";
-  vendorHash = "sha256-gfHyssQrY5r3rQAzonM3Rv/BDIYGEY/PiOZEyoGGeiw=";
+  version = "${giteaVersion}-nyx";
+  vendorSha256 = "sha256-gfHyssQrY5r3rQAzonM3Rv/BDIYGEY/PiOZEyoGGeiw=";
 
-  src = pkgs.fetchgit  {
-     url = "https://github.com/nyxkrage/gitea";
-     rev = "1.19.3";
-     hash = "sha256-KQEBq1BFQRLJW9fJq4W1sOsAqOCfNHKY/+cT8rkXxv4=";
-  };
+  inherit src;
 
   nativeBuildInputs = [
     pkgs.gnumake
@@ -20,7 +18,6 @@ pkgs.buildGoModule  rec {
     pkgs.nodejs
     pkgs.nodePackages.npm
     pkgs.git
-
   ];
 
   buildPhase = ''

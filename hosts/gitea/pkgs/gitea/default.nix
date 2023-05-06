@@ -1,6 +1,6 @@
 { pkgs, ... }: pkgs.unstable.gitea.overrideAttrs (old: rec {
   pname = "gitea";
-  version = "1.19.3-nyx";
+  version = "1.19.3";
 
-  src = "${import ./build.nix { inherit pkgs; }}/gitea-src-${version}.tar.gz";
+  src = "${import ./build.nix { inherit pkgs; giteaVersion = version; }}/gitea-src-${version}-nyx.tar.gz";
 })

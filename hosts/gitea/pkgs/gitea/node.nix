@@ -1,20 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, giteaVersion, src, ... }:
+let
+  escapeSlash = str: builtins.replaceStrings [ "/" ] [ "\\/"] str;
+in
 pkgs.stdenv.mkDerivation rec {
   pname = "gitea-node-env";
-  version = "1.19.3-nyx";
+  version = "${giteaVersion}-nyx";
 
-  src = pkgs.fetchgit  {
-     url = "https://github.com/nyxkrage/gitea";
-     rev = "1.19.3";
-     hash = "sha256-KQEBq1BFQRLJW9fJq4W1sOsAqOCfNHKY/+cT8rkXxv4=";
-  };
+  inherit src;
 
   nativeBuildInputs = [ pkgs.node2nix ];
 
   buildPhase = ''
     mkdir nix
     node2nix -i ${src}/package.json -l ${src}/package-lock.json
-    sed -r -i 's/src = .+?nix\/store.+?;/src = fetchgit { url = "https:\/\/github.com\/nyxkrage\/gitea"; rev = "1.19.3"; hash = "sha256-KQEBq1BFQRLJW9fJq4W1sOsAqOCfNHKY\/+cT8rkXxv4="; };/' node-packages.nix
+    sed -r -i 's/src = .+?nix\/store.+?;/src = fetchgit { url = "${escapeSlash src.url}"; rev = "${escapeSlash src.rev}"; hash = "${escapeSlash src.outputHash}"; };/' node-packages.nix
   '';
 
   installPhase = ''
