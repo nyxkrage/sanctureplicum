@@ -13,6 +13,11 @@
     mailerPasswordFile = config.sops.secrets.gitea_mailer_passwd.path;
     settings = {
       server.SSH_PORT = 22007;
+      repository = {
+        ENABLE_PUSH_CREATE_USER = true;
+        ENABLE_PUSH_CREATE_ORG = true;
+        DEFAULT_PUSH_CREATE_PRIVATE = true;
+      };
       session = {
         COOKIE_SECURE = true;
         PROVIDER = "db";
