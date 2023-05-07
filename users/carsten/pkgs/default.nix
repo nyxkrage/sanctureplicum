@@ -8,7 +8,7 @@
       epkgs.vterm
       epkgs.pdf-tools
       epkgs.auctex
-      (pkgs.callPackage ./spectre-el.nix {})
+      pkgs.nur.repos.sanctureplicum.emacsPackages.spectre-el
     ];
   };
 
@@ -225,7 +225,8 @@
     wireplumber
     # Local
     (callPackage ./areon-pro {})
-    (callPackage ./rec-mono-nyx.nix {})
+  
+    pkgs.nur.repos.sanctureplicum.rec-mono-nyx
 
     gnomeExtensions.color-picker
     gnomeExtensions.just-perfection

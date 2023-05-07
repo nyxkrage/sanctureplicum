@@ -2,7 +2,7 @@
   services.gitea = rec {
     enable = true;
     appName = "Init System: Gitea";
-    package = import ../pkgs/gitea { inherit pkgs; };
+    package = pkgs.nur.repos.sanctureplicum.gitea-nyx;
     database = {
       type = "postgres";
       host = "unix:///var/run/postgresql/";

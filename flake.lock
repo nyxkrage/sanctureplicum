@@ -82,6 +82,21 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1642700792,
+        "narHash": "sha256-XqHrk7hFb+zBvRg6Ghl+AZDq03ov6OshJLiSWOoX5es=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "846b2ae0fc4cc943637d3d1def4454213e203cba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -126,7 +141,47 @@
         "type": "github"
       }
     },
+    "mach-nix_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "sanctureplicum-nur",
+          "mach-nixpkgs"
+        ],
+        "pypi-deps-db": "pypi-deps-db_2"
+      },
+      "locked": {
+        "lastModified": 1661359648,
+        "narHash": "sha256-BRz30Xg/g535oRJA3xEcXf0KM6GTJPugt2lgaom3D6g=",
+        "owner": "davhau",
+        "repo": "mach-nix",
+        "rev": "6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "davhau",
+        "repo": "mach-nix",
+        "rev": "6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1",
+        "type": "github"
+      }
+    },
     "mach-nixpkgs": {
+      "locked": {
+        "lastModified": 1670452817,
+        "narHash": "sha256-u5GnneIreydXauFCces/boSaj5+0ZgtBIlkOcwGriXY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9fd0585f7dc9b85eb5d426396004cc649261e60d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9fd0585f7dc9b85eb5d426396004cc649261e60d",
+        "type": "github"
+      }
+    },
+    "mach-nixpkgs_2": {
       "locked": {
         "lastModified": 1670452817,
         "narHash": "sha256-u5GnneIreydXauFCces/boSaj5+0ZgtBIlkOcwGriXY=",
@@ -144,7 +199,9 @@
     },
     "nekowinston-nur": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
       },
       "locked": {
         "lastModified": 1680788407,
@@ -184,54 +241,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1679319606,
-        "narHash": "sha256-wyEMIZB6BnsmJWInEgDZu66hXVMGJEZFl5uDsn27f9M=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "8bc6945b1224a1cfa679d6801580b1054dba1a5c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1682173319,
-        "narHash": "sha256-tPhOpJJ+wrWIusvGgIB2+x6ILfDkEgQMX0BTtM5vd/4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ee7ec1c71adc47d2e3c2d5eb0d6b8fbbd42a8d1c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "release-22.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1681272286,
-        "narHash": "sha256-9X5p+gwYrowgbsRgkf14HFI0fkr6UikuwRIQAMlF1yI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "6b70761ea8c896aff8994eb367d9526686501860",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1681759395,
         "narHash": "sha256-7aaRtLxLAy8qFVIA26ulB+Q5nDVzuQ71qi0s0wMjAws=",
         "owner": "NixOS",
@@ -245,17 +254,17 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1624561540,
-        "narHash": "sha256-izJ2PYZMGMsSkg+e7c9A1x3t/yOLT+qzUM6WQsc2tqo=",
-        "owner": "NixOS",
+        "lastModified": 1681272286,
+        "narHash": "sha256-9X5p+gwYrowgbsRgkf14HFI0fkr6UikuwRIQAMlF1yI=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c6a049a3d32293b24c0f894a840872cf67fd7c11",
+        "rev": "6b70761ea8c896aff8994eb367d9526686501860",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -293,6 +302,22 @@
         "type": "github"
       }
     },
+    "pypi-deps-db_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670518748,
+        "narHash": "sha256-pfUce0zlRI+tzxPgvRSKkusjxDCBVjCpkcDKWboHa+U=",
+        "owner": "davhau",
+        "repo": "pypi-deps-db",
+        "rev": "e9571cac25d2f509e44fec9dc94a3703a40126ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DavHau",
+        "repo": "pypi-deps-db",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
@@ -301,7 +326,7 @@
         "mach-nixpkgs": "mach-nixpkgs",
         "nekowinston-nur": "nekowinston-nur",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "sanctureplicum-nur": "sanctureplicum-nur",
@@ -310,28 +335,34 @@
     },
     "sanctureplicum-nur": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "mach-nix": "mach-nix_2",
+        "mach-nixpkgs": "mach-nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
       },
       "locked": {
-        "lastModified": 1681311070,
-        "narHash": "sha256-xOTKoUb0ZovAqi7B1NAd6s4Xu0O9KjvdLVjbM/mlWIY=",
-        "owner": "nyxkrage",
-        "repo": "sanctureplicum-nur",
-        "rev": "bc23d8023f1b65f28fb761044533183edc2ca63c",
-        "type": "github"
+        "lastModified": 1683424668,
+        "narHash": "sha256-x8RSH08tS9nkvmSN1zWjzkl2md4hOo5sYfoZYbm48lA=",
+        "ref": "refs/heads/main",
+        "rev": "b0ee28f2abb6c40ccc1c8ca0d4232f9c3fede304",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
       },
       "original": {
-        "owner": "nyxkrage",
-        "repo": "sanctureplicum-nur",
-        "type": "github"
+        "type": "git",
+        "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
       }
     },
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1682338428,
