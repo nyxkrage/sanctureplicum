@@ -50,4 +50,5 @@
       owner = config.systemd.services.gitea.serviceConfig.User;
     };
   };
+  networking.firewall.allowedTCPPorts = [ 3000 ];
 }
