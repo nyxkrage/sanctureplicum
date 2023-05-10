@@ -46,6 +46,17 @@ with pkgs;
       experimental-features = [ "nix-command" "flakes" ];
 
       trusted-users = [ config.users.users.carsten.name or "" ];
+
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://sanctureplicum.cachix.org"
+        "https://cache.nixos.org"
+      ];
+
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "sanctureplicum.cachix.org-1:VztHStNqXs5pFZ0eNVoIfoqCaeKdNKRqkbNb8lYrqQ8"
+      ];
     };
   };
 

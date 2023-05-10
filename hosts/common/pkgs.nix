@@ -7,6 +7,7 @@
     git
     git-lfs
     git-crypt
+    cachix
     gnupg
     home-manager
     ntfsprogs

@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    mach-nixpkgs.url = "github:nixos/nixpkgs/9fd0585f7dc9b85eb5d426396004cc649261e60d";
     nur.url = "github:nix-community/nur";
     sanctureplicum-nur = {
       url = "git+https://gitea.pid1.sh/sanctureplicum/nur.git";
@@ -13,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -31,14 +30,6 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mach-nix = {
-      url = "github:davhau/mach-nix/6cd3929b1561c3eef68f5fc6a08b57cf95c41ec1";
-      inputs.nixpkgs.follows = "mach-nixpkgs";
-      inputs.pypi-deps-db = {
-        url = "github:davhau/pypi-deps-db/e9571cac25d2f509e44fec9dc94a3703a40126ff";
-        inputs.nixpkgs.follows = "mach-nixpkgs";
-      };
-    };
   };
 
   outputs =
@@ -49,8 +40,6 @@
     , sanctureplicum-nur
     , nekowinston-nur
     , emacs-overlay
-    , mach-nix
-    , mach-nixpkgs
     , nixos-wsl
     , sops-nix
     , home-manager
@@ -59,26 +48,19 @@
     let
       overlays = [
         (import emacs-overlay)
-        (final: prev: {
-          nur = import nur {
-            nurpkgs = prev;
-            pkgs = prev;
-            repoOverrides = {
-              nekowinston = import nekowinston-nur { pkgs = prev; };
-              sanctureplicum = import sanctureplicum-nur { pkgs = prev; system = prev.system; mach-nixpkgs = import mach-nixpkgs { system = prev.system; }; inherit mach-nix; };
-            };
-          };
-          unstable = import nixpkgs-unstable {
+        (final: prev: let unstable = import nixpkgs-unstable {
             system = prev.system;
             config.allowUnfree = true;
-          };
-          mach-nix = {
-            pkgs = import mach-nixpkgs {
-              system = prev.system;
-              config.allowUnfree = true;
+          }; in {
+          nur = import nur {
+            nurpkgs = unstable;
+            pkgs = unstable;
+            repoOverrides = {
+              nekowinston = import nekowinston-nur { pkgs = unstable; };
+              sanctureplicum = import sanctureplicum-nur { pkgs = unstable; system = unstable.system; };
             };
-            inherit mach-nix;
           };
+          inherit unstable;
         })
       ];
     in {

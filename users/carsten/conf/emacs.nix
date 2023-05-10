@@ -9,6 +9,13 @@
   };
   systemd.user.sessionVariables = config.home.sessionVariables;
 
+  programs.emacs.extraPackages = epkgs: [
+    epkgs.vterm
+    epkgs.pdf-tools
+    epkgs.auctex
+    pkgs.nur.repos.sanctureplicum.emacsPackages.spectre-el
+  ];
+
   xdg.configFile = {
     "doom" = {
       source = ./doom;
