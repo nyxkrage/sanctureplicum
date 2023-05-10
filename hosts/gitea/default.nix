@@ -5,11 +5,13 @@
 }: {
   imports = [
     ./hardware.nix
-
+    (import ../common/network.nix { hostName = "gitea"; macAddresses = [ "00:50:50:00:00:01" ]; ipv4Addresses = [ "192.168.1.7" ]; })
     ../common
     
     ./services
   ];
+
+  # networking = builtins.trace ((pkgs.callPackage ../common/network.nix {}) { hostName = "gitea"; macAddresses = [ "00:50:50:00:00:01" ]; ipv4Addresses = [ "192.168.1.7" ]; }) {};
 
   users.users.admin = {
     isNormalUser = true;
@@ -24,9 +26,6 @@
 
   graphical = false;
   vm-guest = true;
-
-  networking.hostName = "gitea";
-  networking.firewall.allowedTCPPorts = [ 22 3000 ];
 
   sops = {
     defaultSopsFile = ../../secrets/gitea.yaml;
