@@ -12,10 +12,14 @@
 
   installPhase = ''
     mkdir -p $out/share/fonts/truetype
-    if file ${src}/* | grep 'TrueType Font data' >/dev/null; then
+    unlocked=true
+    for f in $(find ${src} -type f); do
+      if [ $(strings $f | head -n1) = "GITCRYPT" ]; then unlocked=false; break; fi
+    done
+    if [ $unlocked = "true" ]; then
       cp ${src}/* $out/share/fonts/truetype
     else
-      printf "\033[0;33m[WARN]\033[0m: AreonPro fonts are propietary and are encrypted, please run git crypt unlock and rebuild to make sure they are properly copied to the store"
+      printf '\033[0;33m[WARN]\033[0m: AreonPro fonts are propietary and are encrypted, please run `git crypt unlock` and rebuild to make sure they are properly copied to the store'
     fi
   '';
 
