@@ -77,13 +77,22 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(defun ctp/org-heading-colors ()
-  (face-remap-add-relative 'org-level-1 (list :foreground (catppuccin-get-color 'blue)))
-  (face-remap-add-relative 'org-level-2 (list :foreground (catppuccin-get-color 'red)))
-  (face-remap-add-relative 'org-level-3 (list :foreground (catppuccin-get-color 'green)))
-  (face-remap-add-relative 'org-level-4 (list :foreground (catppuccin-get-color 'lavender)))
-  (face-remap-add-relative 'org-level-5 (list :foreground (catppuccin-get-color 'yellow)))
-  (face-remap-add-relative 'org-level-6 (list :foreground (catppuccin-get-color 'maroon)))
-  (face-remap-add-relative 'org-level-7 (list :foreground (catppuccin-get-color 'teal)))
-  (face-remap-add-relative 'org-level-8 (list :foreground (catppuccin-get-color 'mauve))))
-(add-hook! 'org-mode-hook 'ctp/org-heading-colors)
+(use-package! org
+  :config
+  (setq org-src-fontify-natively t)
+  (add-to-list 'org-src-block-faces '("" '(:foreground (catppuccin-get-color 'green))))
+
+  (defun ctp/text-org-blocks ()
+    (face-remap-add-relative 'org-block (list :foreground (catppuccin-get-color 'text))))
+  (add-hook! 'org-mode-hook 'ctp/text-org-blocks)
+
+  (defun ctp/org-heading-colors ()
+    (face-remap-add-relative 'org-level-1 (list :foreground (catppuccin-get-color 'blue)))
+    (face-remap-add-relative 'org-level-2 (list :foreground (catppuccin-get-color 'red)))
+    (face-remap-add-relative 'org-level-3 (list :foreground (catppuccin-get-color 'green)))
+    (face-remap-add-relative 'org-level-4 (list :foreground (catppuccin-get-color 'lavender)))
+    (face-remap-add-relative 'org-level-5 (list :foreground (catppuccin-get-color 'yellow)))
+    (face-remap-add-relative 'org-level-6 (list :foreground (catppuccin-get-color 'maroon)))
+    (face-remap-add-relative 'org-level-7 (list :foreground (catppuccin-get-color 'teal)))
+    (face-remap-add-relative 'org-level-8 (list :foreground (catppuccin-get-color 'mauve))))
+  (add-hook! 'org-mode-hook 'ctp/org-heading-colors))

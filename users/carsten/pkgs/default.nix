@@ -2,6 +2,7 @@
   imports = [
     ./firefox.nix
     ./gpg.nix
+    ./editors.nix
   ];
 
   programs.bash.enable = true;
