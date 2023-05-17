@@ -17,7 +17,6 @@
       if [ $(strings $f | head -n1) = "GITCRYPT" ]; then unlocked=false; break; fi
     done
     if [ $unlocked = "true" ]; then
-      echo ${src}/*
       cp ${src}/* $out/share/fonts/truetype
     else
       printf '\033[0;33m[WARN]\033[0m: AreonPro fonts are propietary and are encrypted, please run `git crypt unlock` and rebuild to make sure they are properly copied to the store'
