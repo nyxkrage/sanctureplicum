@@ -49,4 +49,5 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! meson-mode)
-(package! org-mode :pin "fe74a3ed2d8")
+(package! org :pin "fe74a3ed2d8"
+  :recipe (:host nil :repo "https://git.savannah.gnu.org/git/emacs/org-mode.git"))

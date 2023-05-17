@@ -34,6 +34,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (add-to-list 'custom-theme-load-path (concat (getenv "HOME") "/source/ctp-emacs"))
+(load-theme 'catppuccin t t)
 (setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -77,10 +78,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
 (use-package! org
   :config
   (setq org-src-fontify-natively t)
-  (add-to-list 'org-src-block-faces '("" '(:foreground (catppuccin-get-color 'green))))
+  (add-to-list 'org-src-block-faces (list "" (list :foreground (catppuccin-get-color 'green))))
 
   (defun ctp/text-org-blocks ()
     (face-remap-add-relative 'org-block (list :foreground (catppuccin-get-color 'text))))

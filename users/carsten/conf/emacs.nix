@@ -27,7 +27,7 @@
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
-            ${config.xdg.configHome}/emacs/bin/doom sync -u -e
+            ${config.xdg.configHome}/emacs/bin/doom sync -e
           fi
       ''}";
     };
@@ -45,7 +45,7 @@
           if [ ! -d "$DOOMLOCALDIR" ]; then
             ${config.xdg.configHome}/emacs/bin/doom install
           else
-            ${config.xdg.configHome}/emacs/bin/doom sync -u -e
+            ${config.xdg.configHome}/emacs/bin/doom sync -e
           fi
         ''}";
     };
