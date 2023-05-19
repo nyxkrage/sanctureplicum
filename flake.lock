@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683586486,
-        "narHash": "sha256-BTCGdYOY/xm6MjrGLI7I/WOwLOAWFItcC68Xw/zFzYc=",
+        "lastModified": 1684522262,
+        "narHash": "sha256-jLzI7Sdz+nbmw1bWwIzIjcZRBGJw6kXoDnXLkUSpYyg=",
         "ref": "refs/heads/main",
-        "rev": "dc3524b2fa1666d9227ad9987d0eca6c38a726e3",
-        "revCount": 19,
+        "rev": "a48a682a010b6aa0b9bfc51d64c591e83a53c042",
+        "revCount": 21,
         "type": "git",
         "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
       },
