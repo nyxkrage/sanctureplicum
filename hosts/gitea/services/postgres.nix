@@ -1,8 +1,15 @@
-{ ... }: {
+{...}: {
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "gitea" ];
+    enableTCPIP = true;
+    ensureDatabases = ["gitea" "ryot"];
     ensureUsers = [
+      {
+        name = "ryot";
+        ensurePermissions = {
+          "DATABASE ryot" = "ALL PRIVILEGES";
+        };
+      }
       {
         name = "gitea";
         ensurePermissions = {
@@ -11,4 +18,5 @@
       }
     ];
   };
+  networking.firewall.allowedTCPPorts = [5432 8001];
 }
