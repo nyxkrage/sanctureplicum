@@ -151,16 +151,16 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1683475240,
-        "narHash": "sha256-sy6MYoCaIZsOenYplbzVXI4Ce9Bp/vIOpuFa97+a6wc=",
+        "lastModified": 1684481515,
+        "narHash": "sha256-sDMEZ4HLP6sVNiBcgla3KWihdDjh67DP5ZWkGKWFgY0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e040aab15638aaf8d0786894851a2b1ca09a7baf",
+        "rev": "5b1bc788f578cd83d54b48bb057d6f6703ae7725",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684522262,
-        "narHash": "sha256-jLzI7Sdz+nbmw1bWwIzIjcZRBGJw6kXoDnXLkUSpYyg=",
+        "lastModified": 1684541278,
+        "narHash": "sha256-Uj3zSVFV690qMTtXvTK98JaL+lliUrP5bZ++to2naE8=",
         "ref": "refs/heads/main",
-        "rev": "a48a682a010b6aa0b9bfc51d64c591e83a53c042",
-        "revCount": 21,
+        "rev": "df04918245d3a0e630374d9eca162b844c18da5d",
+        "revCount": 23,
         "type": "git",
         "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
       },

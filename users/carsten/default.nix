@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }: {
-  imports = [ ];
+  imports = [];
 
   users.users.carsten = {
     isNormalUser = true;
@@ -15,7 +16,7 @@
       "docker" # Containers
     ];
     shell = pkgs.bash;
-    packages = [ ];
+    packages = [];
   };
 
   home-manager.users.carsten = {

@@ -1,12 +1,12 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with config;
 with lib;
-with pkgs; 
-{
+with pkgs; {
   imports = [
     ./graphical.nix
     ./vm-guest.nix
@@ -26,7 +26,6 @@ with pkgs;
     };
   };
 
-
   # Enable non-free packages
   nixpkgs.config.allowUnfree = true;
 
@@ -43,9 +42,9 @@ with pkgs;
       sandbox = true;
 
       # Enable flakes
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
 
-      trusted-users = [ config.users.users.carsten.name or "" ];
+      trusted-users = [config.users.users.carsten.name or ""];
 
       substituters = [
         "https://nix-community.cachix.org"
