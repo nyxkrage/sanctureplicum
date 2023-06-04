@@ -1,8 +1,7 @@
 {
-  pkgs ? import <unstable> {},
-  stdenv ? pkgs.stdenv,
-  moon ? pkgs.callPackage ../moonrepo {},
-  craneLib ? import (builtins.fetchTarball "https://github.com/ipetkov/crane/archive/refs/tags/v0.12.1.tar.gz") {inherit pkgs;},
+  pkgs,
+  stdenv,
+  craneLib,
 }: let
   pname = "ryot";
   version = "v1.0.0-beta.52";
@@ -21,7 +20,7 @@ in
     inherit pname version src;
 
     nativeBuildInputs = [
-      moon
+      (pkgs.callPackage ../moonrepo {inherit craneLib;})
       pkgs.nodejs
       pkgs.rustc
       pkgs.cargo

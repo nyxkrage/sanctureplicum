@@ -1,14 +1,20 @@
-{ config
-, modulesPath
-, pkgs
-, ...
+{
+  config,
+  modulesPath,
+  pkgs,
+  ...
 }: {
   imports = [
     ./hardware.nix
-    (import ../common/network.nix { hostName = "gitea"; macAddresses = [ "00:50:50:00:00:01" ]; ipv4Addresses = [ "192.168.1.7" ]; })
+    (import ../common/network.nix {
+      hostName = "gitea";
+      macAddresses = ["00:50:50:00:00:01"];
+      ipv4Addresses = ["192.168.1.7"];
+    })
     ../common
-    
+
     ./services
+    ./modules
   ];
 
   # networking = builtins.trace ((pkgs.callPackage ../common/network.nix {}) { hostName = "gitea"; macAddresses = [ "00:50:50:00:00:01" ]; ipv4Addresses = [ "192.168.1.7" ]; }) {};

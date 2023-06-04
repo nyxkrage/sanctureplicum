@@ -1,8 +1,8 @@
 {
-  pkgs ? import <unstable> {},
-  lib ? pkgs.lib,
-  fetchFromGitHub ? pkgs.fetchFromGitHub,
-  craneLib ? import (builtins.fetchTarball "https://github.com/ipetkov/crane/archive/refs/tags/v0.12.1.tar.gz") {inherit pkgs;},
+  pkgs,
+  lib,
+  fetchFromGitHub,
+  craneLib,
 }:
 craneLib.buildPackage rec {
   pname = "moonrepo";
