@@ -5,7 +5,7 @@
   ...
 }: {
   imports =
-    lib.optional (!lib.hasPrefix (builtins.readFile ./secrets.nix) "GITCRYPT") ./secrets.nix;
+    lib.optional ((lib.traceVal (builtins.hashFile "sha256" ./secrets.nix)) == "") ./secrets.nix;
 
   services.ryot = rec {
     enable = true;
