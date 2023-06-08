@@ -4,12 +4,12 @@
   craneLib,
 }: let
   pname = "ryot";
-  version = "v1.0.0-beta.52";
+  version = "v1.0.1";
   src = pkgs.fetchFromGitHub {
     owner = "ignisda";
     repo = pname;
     rev = version;
-    sha256 = "sha256-iyLOHRnc0UfSOVnDweKdlWSs5sv9F7ZC9FEXIum8XKM=";
+    sha256 = "sha256-rtj6L0oVf+Jxjt5cOHzJSmhbxisiLl2ATIlLy06N/Xs=";
   };
   nodeDependencies = (pkgs.callPackage ./node {}).nodeDependencies;
   cargoDependencies = craneLib.vendorCargoDeps {

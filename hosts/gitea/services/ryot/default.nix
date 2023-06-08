@@ -1,8 +1,12 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
+  imports =
+    lib.optional (!lib.hasPrefix (builtins.readFile ./secrets.nix) "GITCRYPT") ./secrets.nix;
+
   services.ryot = rec {
     enable = true;
     database.socket = "/var/run/postgresql";
