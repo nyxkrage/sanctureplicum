@@ -11,9 +11,9 @@
     ./editors.nix
   ];
 
-  programs.bash.enable = builtins.trace config.home.profileDirectory true;
+  programs.bash.enable = true;
 
-  services.lorri.enable = true;
+  services.lorri.enable = pkgs.stdenv.isLinux;
 
   home.packages = with pkgs;
     [
@@ -26,7 +26,7 @@
       jq
       mcfly
       (
-        if osConfig.graphical
+        if (osConfig.graphical or true)
         then pinentry-gtk2
         else pinentry-curses
       )
@@ -51,20 +51,21 @@
       # language-servers
       rust-analyzer
     ]
-    ++ lib.lists.optionals osConfig.graphical [
+    ++ lib.lists.optionals (osConfig.graphical or true) [
       (discord.override {withOpenASAR = true;})
-      catppuccin-gtk
-      dconf
-      gparted
-      numberstation
-      pavucontrol
       recursive
-      wireplumber
       # Local
       (callPackage ./areon-pro {})
 
       pkgs.nur.repos.sanctureplicum.rec-mono-nyx
 
+    ] ++ lib.lists.optionals (osConfig.graphical or true && pkgs.stdenv.isLinux) [
+      catppuccin-gtk
+      pavucontrol
+      dconf
+      gparted
+      numberstation
+      wireplumber
       gnomeExtensions.color-picker
       gnomeExtensions.just-perfection
       gnomeExtensions.unite

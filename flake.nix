@@ -1,10 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/release-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/nur";
     sanctureplicum-nur = {
-      url = "git+https://gitea.pid1.sh/sanctureplicum/nur.git";
+      url = "git+file:///Users/carsten/source/nur";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nekowinston-nur = {
@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -24,6 +24,10 @@
     };
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     crane = {
@@ -45,6 +49,7 @@
     nekowinston-nur,
     emacs-overlay,
     nixos-wsl,
+    nix-darwin,
     sops-nix,
     crane,
     home-manager,
@@ -91,6 +96,7 @@
           home-manager.backupFileExtension = "bak";
         }
         ./hosts/falcon
+        ./hosts/common/linux.nix
       ];
     };
     nixosConfigurations.eagle = nixpkgs.lib.nixosSystem {
@@ -114,8 +120,34 @@
           ];
         }
         ./hosts/eagle
+        ./hosts/common/linux.nix
       ];
     };
+    darwinConfigurations.hawk = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ({
+          config,
+          pkgs,
+          ...
+        }: {
+          nixpkgs.overlays = overlays;
+        })
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "bak";
+          home-manager.sharedModules = [
+            sops-nix.homeManagerModule
+          ];
+        }
+        ./hosts/hawk
+        ./hosts/common/darwin.nix
+      ];
+    };
+    
     nixosConfigurations.buzzard = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -138,6 +170,7 @@
           ];
         }
         ./hosts/buzzard
+        ./hosts/common/linux.nix
       ];
     };
     nixosConfigurations.gitea = nixpkgs.lib.nixosSystem {
@@ -154,6 +187,7 @@
 
         sops-nix.nixosModules.sops
         ./hosts/gitea
+        ./hosts/common/linux.nix
       ];
     };
   };

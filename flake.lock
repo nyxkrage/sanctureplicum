@@ -129,20 +129,19 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1681092193,
-        "narHash": "sha256-JerCqqOqbT2tBnXQW4EqwFl0hHnuZp21rIQ6lu/N4rI=",
+        "lastModified": 1686693375,
+        "narHash": "sha256-1Smjo0E8WI9PeVGmmCjpQWRX04aQvz5gAGXfdanIjgw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f9edbedaf015013eb35f8caacbe0c9666bbc16af",
+        "rev": "61e5d1c38ef04ba30a9119825b159bce9c6010be",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-22.11",
+        "ref": "release-23.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -164,6 +163,26 @@
       "original": {
         "owner": "nekowinston",
         "repo": "nur",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1686307493,
+        "narHash": "sha256-R4VEFnDn7nRmNxAu1LwNbjns5DPM8IBsvnrWmZ8ymPs=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "7c16d31383a90e0e72ace0c35d2d66a18f90fb4f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -191,16 +210,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1683478192,
-        "narHash": "sha256-7f7RR71w0jRABDgBwjq3vE1yY3nrVJyXk8hDzu5kl1E=",
+        "lastModified": 1686846322,
+        "narHash": "sha256-FtBG6hLN9Ui41F+S0Mjveo/FarUawLBAYQ1EBBNmiTo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c568239bcc990050b7aedadb7387832440ad8fb1",
+        "rev": "083cb1a04d196e35b9c8293a379266c854e284c1",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "nixos-22.11",
+        "ref": "release-23.05",
         "type": "indirect"
       }
     },
@@ -241,6 +260,7 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nekowinston-nur": "nekowinston-nur",
+        "nix-darwin": "nix-darwin",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
@@ -281,17 +301,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1684541278,
-        "narHash": "sha256-Uj3zSVFV690qMTtXvTK98JaL+lliUrP5bZ++to2naE8=",
+        "lastModified": 1686890354,
+        "narHash": "sha256-a8Yxu4ApSk6fhfRoHvnWhUJuOG/A7BVASczKtdXMzf0=",
         "ref": "refs/heads/main",
-        "rev": "df04918245d3a0e630374d9eca162b844c18da5d",
-        "revCount": 23,
+        "rev": "72e258ac341e9e91314a2738b7577273354a386b",
+        "revCount": 24,
         "type": "git",
-        "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
+        "url": "file:///Users/carsten/source/nur"
       },
       "original": {
         "type": "git",
-        "url": "https://gitea.pid1.sh/sanctureplicum/nur.git"
+        "url": "file:///Users/carsten/source/nur"
       }
     },
     "sops-nix": {
@@ -329,21 +349,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

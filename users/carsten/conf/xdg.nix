@@ -11,7 +11,7 @@
 
 
     userDirs = {
-      enable = true;
+      enable = pkgs.stdenv.isLinux;
       createDirectories = true;
 
       # Improve the XDG dir locations so they dont clutter up $HOME

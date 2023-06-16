@@ -2,7 +2,7 @@
 , osConfig
 , lib
 , ... }: {
-  config = lib.mkIf osConfig.graphical {
+  config = lib.mkIf (osConfig.graphical or false) {
     xdg.dataFile.backgrounds.source = ../wallpapers;
 
     dconf.settings = {
