@@ -1,15 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/nur";
     sanctureplicum-nur = {
       url = "git+https://gitea.pid1.sh/sanctureplicum/nur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nekowinston-nur = {
       url = "github:nekowinston/nur";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -18,7 +17,7 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
@@ -32,7 +31,7 @@
     };
     crane = {
       url = "github:ipetkov/crane/v0.11.3";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -43,7 +42,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     nur,
     sanctureplicum-nur,
     nekowinston-nur,
@@ -57,24 +55,24 @@
   } @ inputs: let
     overlays = [
       (import emacs-overlay)
-      (final: prev: let
-        unstable = import nixpkgs-unstable {
-          system = prev.system;
-          config.allowUnfree = true;
-        };
-      in {
+      (final: prev: 
+        # let unstable = import nixpkgs-unstable {
+        #   system = prev.system;
+        #   config.allowUnfree = true;
+        # }; in
+        {
         nur = import nur {
-          nurpkgs = unstable;
-          pkgs = unstable;
+          nurpkgs = prev;
+          pkgs = prev;
           repoOverrides = {
-            nekowinston = import nekowinston-nur {pkgs = unstable;};
+            nekowinston = import nekowinston-nur {pkgs = prev;};
             sanctureplicum = import sanctureplicum-nur {
-              pkgs = unstable;
-              system = unstable.system;
+              pkgs = prev;
+              system = prev.system;
             };
           };
         };
-        inherit unstable;
+        #inherit unstable;
       })
     ];
   in {

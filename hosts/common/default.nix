@@ -23,9 +23,6 @@ with pkgs; {
       # Maximum number of jobs that Nix will try to build in parallel
       max-jobs = "auto";
 
-      # Perform builds in a sandboxed environment
-      sandbox = true;
-
       # Enable flakes
       experimental-features = ["nix-command" "flakes"];
 

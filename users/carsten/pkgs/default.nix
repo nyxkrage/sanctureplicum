@@ -52,7 +52,6 @@
       rust-analyzer
     ]
     ++ lib.lists.optionals (osConfig.graphical or true) [
-      (discord.override {withOpenASAR = true;})
       recursive
       # Local
       (callPackage ./areon-pro {})
@@ -60,6 +59,7 @@
       pkgs.nur.repos.sanctureplicum.rec-mono-nyx
 
     ] ++ lib.lists.optionals (osConfig.graphical or true && pkgs.stdenv.isLinux) [
+      (discord.override {withOpenASAR = true;})
       catppuccin-gtk
       pavucontrol
       dconf

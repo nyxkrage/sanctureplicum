@@ -8,6 +8,7 @@
     ../common
   ];
 
+  users.users.carsten.home = "/Users/carsten";
   nix.settings.build-cores = 8;
   networking.hostName = "hawk";
 
