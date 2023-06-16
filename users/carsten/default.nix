@@ -29,9 +29,9 @@
     ];
 
     home = {
-      stateVersion = "23.05";
+      stateVersion = builtins.trace config.users.users.carsten.home "23.05";
 
-      homeDirectory = if pkgs.stdenv.isDarwin then "/Users/carsten" else "/home/carsten";
+      homeDirectory = lib.mkIf pkgs.stdenv.isLinux "/home/carsten";
       username = "carsten";
     };
   };

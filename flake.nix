@@ -1,10 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/release-23.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/nur";
     sanctureplicum-nur = {
-      url = "git+file:///Users/carsten/source/nur";
+      url = "git+https://gitea.pid1.sh/sanctureplicum/nur";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nekowinston-nur = {
