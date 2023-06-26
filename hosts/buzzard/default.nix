@@ -1,7 +1,8 @@
-{ config
-, modulesPath
-, pkgs
-, ...
+{
+  config,
+  modulesPath,
+  pkgs,
+  ...
 }: {
   imports = [
     ./hardware.nix
@@ -12,13 +13,19 @@
 
   wsl = {
     enable = true;
-    wslConf.automount.root = "/mnt";
-    defaultUser = "carsten"; 
-    startMenuLaunchers = true;
+    defaultUser = "carsten";
+    wslConf = {
+      automount.enabled = false;
+      interop = {
+        enabled = false;
+	appendWindowsPath = false;
+      };
+    };
+    interop.includePath = false;
   };
   services.openssh = {
     enable = true;
-    permitRootLogin = "yes";
+    settings.PermitRootLogin = "yes";
   };
   graphical = false;
   nix.settings.build-cores = 12;

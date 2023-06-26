@@ -1,37 +1,45 @@
-{ config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./graphical.nix
     ./vm-guest.nix
   ];
 
   users = {
-    defaultUserShell = bash;
+    defaultUserShell = pkgs.bash;
     mutableUsers = true;
 
     users.root = {
       home = "/root";
-      uid = ids.uids.root;
+      uid = config.ids.uids.root;
       group = "root";
-      initialHashedPassword = mkDefault "!";
+      initialHashedPassword = lib.mkDefault "!";
     };
   };
 
   # Configure console keymap
   console.keyMap = "us";
-  boot = lib.mkIf (!config.wsl.enable or false) {
-    networking.nameservers = [ "192.168.1.1" "87.62.97.64" ];
+  boot =
+    if (!config.wsl.enable or false)
+    then {
+      networking.nameservers = ["192.168.1.1" "87.62.97.64"];
 
-    loader = {
-      systemd-boot = {
-        enable = true;
-      };
+      loader = {
+        systemd-boot = {
+          enable = true;
+        };
 
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efi = {
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot/efi";
+        };
       };
-    };
-  };
+    }
+    else {};
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
   i18n.extraLocaleSettings = {

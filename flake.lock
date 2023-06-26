@@ -53,7 +53,7 @@
       "inputs": {
         "flake-utils": "flake-utils_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
@@ -213,7 +213,7 @@
       "inputs": {
         "crane": "crane_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "wezterm-src": "wezterm-src"
       },
@@ -275,16 +275,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1686828063,
-        "narHash": "sha256-Cv0Sx1N5+3xBDF5OnmFU3Qoh9OqZmXDBKg1fgXlXTWs=",
+        "lastModified": 1687729501,
+        "narHash": "sha256-mTLkMePoHUWvTCf3NuKbeYEea/tsikSIKBWwb9OfRr4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "683f2f5ba2ea54abb633d0b17bc9f7f6dede5799",
+        "rev": "35130d4b4f0b8c50ed2aceb909a538c66c91d4a0",
         "type": "github"
       },
       "original": {
         "id": "nixpkgs",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-23.05",
         "type": "indirect"
       }
     },
@@ -302,6 +302,21 @@
         "ref": "nixos-23.05",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1687701825,
+        "narHash": "sha256-aMC9hqsf+4tJL7aJWSdEUurW2TsjxtDcJBwM9Y4FIYM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "07059ee2fa34f1598758839b9af87eae7f7ae6ea",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixpkgs-unstable",
+        "type": "indirect"
       }
     },
     "nur": {
@@ -328,6 +343,7 @@
         "nix-darwin": "nix-darwin",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "sanctureplicum-nur": "sanctureplicum-nur",
         "sops-nix": "sops-nix"
@@ -388,7 +404,7 @@
     "sanctureplicum-nur": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
@@ -408,7 +424,7 @@
     "sops-nix": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "nixpkgs-stable": [
           "nixpkgs"
