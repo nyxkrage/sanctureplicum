@@ -4,6 +4,6 @@
     ./postgres.nix
     ./nginx.nix
     ./sshd.nix
-    ./ryot.nix
+    ./ryot
   ];
 }
