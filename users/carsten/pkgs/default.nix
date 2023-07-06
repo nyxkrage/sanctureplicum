@@ -35,11 +35,15 @@
       wezterm
 
       # Rust
-      cargo
-      gcc
-      llvmPackages_latest.lld
-      llvmPackages_latest.llvm
-      rustc
+      # cargo
+      # gcc
+      # llvmPackages_latest.lld
+      # llvmPackages_latest.llvm
+      # rustc
+      clang
+      # Replace llvmPackages with llvmPackages_X, where X is the latest LLVM version (at the time of writing, 16)
+      #llvmPackages.bintools
+      rustup
 
       # JS
       nodejs
@@ -49,7 +53,7 @@
       mpc-cli
 
       # language-servers
-      rust-analyzer
+      # rust-analyzer
     ]
     ++ lib.lists.optionals (osConfig.graphical or true) [
       recursive

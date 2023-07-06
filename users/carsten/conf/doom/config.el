@@ -78,6 +78,15 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+(use-package! fixmee
+  :after (button-lock nav-flash back-button smartrep string-utils tabulated-list)
+  :config
+  (setq fixmee-notice-regexp "\\(TODO+\\(?:\(\\w+\)\\)?:\\)"))
+
+(use-package! hl-todo
+  :config
+  (setq hl-todo-keyword-faces (assoc-delete-all "TODO" hl-todo-keyword-faces))
+  (add-to-list 'hl-todo-keyword-faces '("TODO+" . (warning bold))))
 
 (use-package! org
   :config

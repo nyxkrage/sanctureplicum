@@ -28,8 +28,12 @@
     };
   };
 
+  home.sessionPath = [
+    "${config.home.sessionVariables.CARGO_HOME}/bin"
+  ];
   home.sessionVariables = {
     CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
     WGETRC = "${config.xdg.dataHome}/wget/wgetrc";
     XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
   };

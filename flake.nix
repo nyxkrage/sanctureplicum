@@ -4,7 +4,8 @@
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     nur.url = "github:nix-community/nur";
     sanctureplicum-nur = {
-      url = "git+https://gitea.pid1.sh/sanctureplicum/nur";
+      #url = "git+https://gitea.pid1.sh/sanctureplicum/nur";
+      url = "git+file:///Users/carsten/source/nur";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nekowinston-nur = {
@@ -26,7 +27,7 @@
       url = "github:nix-community/nixos-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-darwin = {
+    darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -49,7 +50,7 @@
     nekowinston-nur,
     emacs-overlay,
     nixos-wsl,
-    nix-darwin,
+    darwin,
     sops-nix,
     crane,
     home-manager,
@@ -111,7 +112,7 @@
       isDarwin = builtins.match ".+?-linux" == null;
       builder =
         if isDarwin
-        then nix-darwin.lib.darwinSystem
+        then darwin.lib.darwinSystem
         else nixpkgs.lib.nixosSystem;
       hmModule =
         if isDarwin
@@ -190,7 +191,7 @@
         ]
         ++ hmConfig;
     };
-    darwinConfigurations.hawk = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.hawk = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       specialArgs = {
         inherit inputs;
@@ -199,15 +200,10 @@
         [
           overlayModule
           home-manager.darwinModules.home-manager
-          {
-            home-manager.sharedModules = [
-              sops-nix.homeManagerModule
-            ];
-          }
           ./hosts/hawk
           ./hosts/common/darwin.nix
         ]
-        ++ hmConfig;
+        ++ (hmConfig true);
     };
 
     nixosConfigurations.buzzard = mkSystem {
@@ -234,13 +230,23 @@
     nixosConfigurations.gitea = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs;
         craneLib = crane.lib."x86_64-linux";
       };
       modules = [
         overlayModule
         sops-nix.nixosModules.sops
         ./hosts/gitea
+        ./hosts/common/linux.nix
+      ];
+    };
+    nixosConfigurations.boulder = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+      };
+      modules = [
+        overlayModule
+        ./hosts/boulder
         ./hosts/common/linux.nix
       ];
     };

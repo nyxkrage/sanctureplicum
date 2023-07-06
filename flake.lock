@@ -49,6 +49,51 @@
         "type": "github"
       }
     },
+    "crane_3": {
+      "inputs": {
+        "flake-compat": "flake-compat_4",
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": [
+          "sanctureplicum-nur",
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_3"
+      },
+      "locked": {
+        "lastModified": 1676846788,
+        "narHash": "sha256-XLsHLgXyMdliMeAXuzdGP+TXBaV44kG1RPTUHNOs6Jk=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "953b70da2813fb882c39890f2514e7db76fc8843",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "ref": "v0.11.3",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1688307440,
+        "narHash": "sha256-7PTjbN+/+b799YN7Tk2SS5Vh8A0L3gBo8hmB7Y0VXug=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "b06bab83bdf285ea0ae3c8e145a081eb95959047",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -104,6 +149,22 @@
       }
     },
     "flake-compat_3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-compat_4": {
       "flake": false,
       "locked": {
         "lastModified": 1673956053,
@@ -188,6 +249,21 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "locked": {
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -228,26 +304,6 @@
       "original": {
         "owner": "nekowinston",
         "repo": "nur",
-        "type": "github"
-      }
-    },
-    "nix-darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1686307493,
-        "narHash": "sha256-R4VEFnDn7nRmNxAu1LwNbjns5DPM8IBsvnrWmZ8ymPs=",
-        "owner": "lnl7",
-        "repo": "nix-darwin",
-        "rev": "7c16d31383a90e0e72ace0c35d2d66a18f90fb4f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lnl7",
-        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -337,10 +393,10 @@
     "root": {
       "inputs": {
         "crane": "crane",
+        "darwin": "darwin",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nekowinston-nur": "nekowinston-nur",
-        "nix-darwin": "nix-darwin",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
@@ -401,24 +457,49 @@
         "type": "github"
       }
     },
+    "rust-overlay_3": {
+      "inputs": {
+        "flake-utils": [
+          "sanctureplicum-nur",
+          "crane",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "sanctureplicum-nur",
+          "crane",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1676437770,
+        "narHash": "sha256-mhJye91Bn0jJIE7NnEywGty/U5qdELfsT8S+FBjTdG4=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "a619538647bd03e3ee1d7b947f7c11ff289b376e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
     "sanctureplicum-nur": {
       "inputs": {
+        "crane": "crane_3",
         "nixpkgs": [
           "nixpkgs-unstable"
         ]
       },
       "locked": {
         "lastModified": 1686890354,
-        "narHash": "sha256-a8Yxu4ApSk6fhfRoHvnWhUJuOG/A7BVASczKtdXMzf0=",
-        "ref": "refs/heads/main",
-        "rev": "72e258ac341e9e91314a2738b7577273354a386b",
-        "revCount": 24,
+        "narHash": "sha256-ImaA4sfwjZyqY9yA9IsvbZ0Oh/6Sxh1dft8tWaXdJrM=",
         "type": "git",
-        "url": "https://gitea.pid1.sh/sanctureplicum/nur"
+        "url": "file:///Users/carsten/source/nur"
       },
       "original": {
         "type": "git",
-        "url": "https://gitea.pid1.sh/sanctureplicum/nur"
+        "url": "file:///Users/carsten/source/nur"
       }
     },
     "sops-nix": {

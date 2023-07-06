@@ -49,5 +49,12 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! meson-mode)
+(when (package! fixmee)
+  (package! button-lock)
+  (package! nav-flash)
+  (package! back-button)
+  (package! smartrep)
+  (package! string-utils)
+  (package! tabulated-list))
 (package! org :pin "fe74a3ed2d8"
   :recipe (:host nil :repo "https://git.savannah.gnu.org/git/emacs/org-mode.git"))
